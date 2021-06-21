@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateUserInputs } from './dto/inputs/create-user.inputs';
 import { User } from './model/user';
-import { uuid as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 import { UpdateUserInputs } from './dto/inputs/update-user.inputs';
 import { GetUserArgs } from './dto/args/get-user.args';
 import { GetUsersArgs } from './dto/args/get-users.args';
