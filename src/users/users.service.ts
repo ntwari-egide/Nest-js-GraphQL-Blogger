@@ -4,6 +4,7 @@ import { User } from './model/user';
 import { uuid as uuidv4 } from 'uuid'
 import { UpdateUserInputs } from './dto/inputs/update-user.inputs';
 import { GetUserArgs } from './dto/args/get-user.args';
+import { GetUsersArgs } from './dto/args/get-users.args';
 
 @Injectable()
 export class UsersService {
@@ -32,8 +33,9 @@ export class UsersService {
 
     }
 
-    public getUsers(): [User]{
-        return 
+    public getUsers(getUsersArg: GetUsersArgs): User[]{
+
+        return getUsersArg.userIds.map(userId => this.getUser({userId}))
     }
 
     public updateUser(updateUserData: UpdateUserInputs): User{
