@@ -19,4 +19,12 @@ export class UsersService {
         return 
     }
 
+    public updateUser(): User{
+        return 
+    }
+
+    public deleleUser(): User{
+        return
+    }
+
 }
