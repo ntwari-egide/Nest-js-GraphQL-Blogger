@@ -37,4 +37,9 @@ export class UsersResolver{
     }
     
 
+    @Mutation(()=> User)
+    updateUser(): User{
+        return this.usersService.updateUser()
+    }
+
 }
