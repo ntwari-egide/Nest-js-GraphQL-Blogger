@@ -45,7 +45,7 @@ export class UsersResolver{
     }
 
     @Mutation(()=> User)
-    deleteUser(@Args() deleteUserData: DeleteUserInputs): User{
+    deleteUser(@Args('deleteUserData') deleteUserData: DeleteUserInputs): User{
         return this.usersService.deleleUser(deleteUserData)
     }
 
