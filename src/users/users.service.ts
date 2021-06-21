@@ -3,6 +3,7 @@ import { CreateUserInputs } from './dto/inputs/create-user.inputs';
 import { User } from './model/user';
 import { uuid as uuidv4 } from 'uuid'
 import { UpdateUserInputs } from './dto/inputs/update-user.inputs';
+import { GetUserArgs } from './dto/args/get-user.args';
 
 @Injectable()
 export class UsersService {
@@ -23,8 +24,12 @@ export class UsersService {
         return user
     }
 
-    public getUser(): User{
-        return 
+    public getUser(getUserArg : GetUserArgs): User{
+        
+        const user = this.users.find(user => user.userId === getUserArg.userId )
+
+        return user
+
     }
 
     public getUsers(): [User]{
