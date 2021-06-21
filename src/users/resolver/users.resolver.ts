@@ -33,6 +33,14 @@ export class UsersResolver{
         return this.usersService.getUsers(getUsersArgs)
     }
 
+    @Query(()=> [User] , { name: 'allUsers', nullable: 'items'})
+    getAllUsers(@Args() getUsersArgs : GetUsersArgs): User[]{
+
+        return this.usersService.getUsers(getUsersArgs)
+    }
+
+
+
     @Mutation(()=> User)
     createUser(@Args('createUserData') createUserData : CreateUserInputs): User{
         return this.usersService.createUser(createUserData)

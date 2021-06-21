@@ -39,6 +39,11 @@ export class UsersService {
         return getUsersArg.userIds.map(userId => this.getUser({userId}))
     }
 
+    public getAllUsers(): User[]{
+
+        return this.users
+    }
+    
     public updateUser(updateUserData: UpdateUserInputs): User{
         const user = this.users.find(user => user.userId === updateUserData.userId)
 
