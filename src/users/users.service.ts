@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateUserInputs } from './dto/inputs/create-user.inputs';
 import { User } from './model/user';
 import { uuid as uuidv4 } from 'uuid'
+import { UpdateUserInputs } from './dto/inputs/update-user.inputs';
 
 @Injectable()
 export class UsersService {
@@ -30,8 +31,12 @@ export class UsersService {
         return 
     }
 
-    public updateUser(): User{
-        return 
+    public updateUser(updateUserData: UpdateUserInputs): User{
+        const user = this.users.find(user => user.userId === updateUserData.userId)
+
+        Object.assign(user,updateUserData)
+        
+        return user
     }
 
     public deleleUser(): User{
