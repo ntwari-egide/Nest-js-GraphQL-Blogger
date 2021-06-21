@@ -19,7 +19,7 @@ export class UsersResolver{
     @Query(()=> User, { name: 'user', nullable: true })
     getUser(@Args() getUserArgs: GetUserArgs): User{
 
-        return this.usersService.getUser()
+        return this.usersService.getUser(getUserArgs)
 
     }
 
@@ -28,9 +28,9 @@ export class UsersResolver{
      * Nullable items means that we are accepting know items only not lists
      */
     @Query(()=> [User] , { name: 'users', nullable: 'items'})
-    getUsers(@Args() getUsersArgs : GetUsersArgs): [User]{
+    getUsers(@Args() getUsersArgs : GetUsersArgs): User[]{
 
-        return this.usersService.getUsers()
+        return this.usersService.getUsers(getUsersArgs)
     }
 
     @Mutation(()=> User)
@@ -41,12 +41,12 @@ export class UsersResolver{
 
     @Mutation(()=> User)
     updateUser(@Args('updateUserData') updateUserData: UpdateUserInputs): User{
-        return this.usersService.updateUser()
+        return this.usersService.updateUser(updateUserData)
     }
 
     @Mutation(()=> User)
     deleteUser(@Args() deleteUserData: DeleteUserInputs): User{
-        return this.usersService.deleleUser()
+        return this.usersService.deleleUser(deleteUserData)
     }
 
 }
