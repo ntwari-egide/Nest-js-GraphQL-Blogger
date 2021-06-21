@@ -34,9 +34,9 @@ export class UsersResolver{
     }
 
     @Query(()=> [User] , { name: 'allUsers', nullable: 'items'})
-    getAllUsers(@Args() getUsersArgs : GetUsersArgs): User[]{
+    getAllUsers(): User[]{
 
-        return this.usersService.getUsers(getUsersArgs)
+        return this.usersService.getAllUsers()
     }
 
 
