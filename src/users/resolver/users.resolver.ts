@@ -43,4 +43,9 @@ export class UsersResolver{
         return this.usersService.updateUser()
     }
 
+    @Mutation(()=> User)
+    deleteUser(): User{
+        return this.usersService.deleleUser()
+    }
+
 }
