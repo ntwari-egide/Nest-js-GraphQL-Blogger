@@ -1,4 +1,5 @@
-import { Query, Resolver } from "@nestjs/graphql";
+import { Args, Query, Resolver } from "@nestjs/graphql";
+import { GetUserArgs } from "../dto/args/get-user.args";
 import { User } from "../model/user";
 import { UsersService } from "../users.service";
 
@@ -12,12 +13,21 @@ export class UsersResolver{
 
 
     @Query(()=> User, { name: 'user', nullable: true })
-    getUser(): User{
+    getUser(@Args() getUserArgs: GetUserArgs): User{
+
         return this.usersService.getUser()
+
     }
 
-}
 
-function nullable(arg0: () => typeof User, name: void, arg2: string, nullable: any, arg4: boolean) {
-    throw new Error("Function not implemented.");
+    /**
+     * Nullable items means that we are accepting know items only not lists
+     */
+    @Query(()=> [User] , { name: 'users', nullable: 'items'})
+    getUsers(): [User]{
+        return this.usersService.getUsers()
+    }
+
+    
+
 }
