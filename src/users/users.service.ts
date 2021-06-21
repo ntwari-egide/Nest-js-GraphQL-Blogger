@@ -11,4 +11,8 @@ export class UsersService {
         return 
     }
 
+    public getUser(): User{
+        return 
+    }
+
 }
